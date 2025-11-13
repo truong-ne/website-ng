@@ -1,11 +1,6 @@
-
-// Include theming for Angular Material with `mat.theme()`.
-// This Sass mixin will define CSS variables that are used for styling Angular Material
-// components according to the Material 3 design spec.
-// Learn more about theming and how to use it for your application's
-// custom components at https://material.angular.dev/guide/theming
-@use '@angular/material' as mat;
 @use 'tailwindcss';
+@use '@angular/material' as mat;
+@use '@ngxpert/hot-toast/styles';
 
 html {
   @include mat.theme((
@@ -39,5 +34,153 @@ body {
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-/* Importing @ngxpert/hot-toast SCSS file. */
-@use '@ngxpert/hot-toast/styles';
+:root {
+  // Typography - Font sizes
+  --font-size-900: 24px;
+  --font-size-800: 22px;
+  --font-size-700: 20px;
+  --font-size-600: 18px;
+  --font-size-500: 16px;
+  --font-size-400: 15px;
+  --font-size-300: 13px;
+  --font-size-200: 12px;
+  --font-size-100: 11px;
+
+  // Typography - Line heights
+  --line-height-900: 32px;
+  --line-height-800: 28px;
+  --line-height-700: 26px;
+  --line-height-600: 24px;
+  --line-height-500: 22px;
+  --line-height-400: 20px;
+  --line-height-300: 20px;
+  --line-height-200: 20px;
+  --line-height-100: 20px;
+  --line-height-100-all-cap: 17px;
+
+  // Color Palette - Neutral (Grayscale)
+  --color-neutral-700: #000000; // Black
+  --color-neutral-600: #565656; // Dark grey
+  --color-neutral-500: #6A6A6A; // Medium dark grey
+  --color-neutral-400: #979797; // Medium grey
+  --color-neutral-300: #D3D4D5; // Light grey
+  --color-neutral-200: #F8F9FA; // Very light grey
+  --color-neutral-100: #FFFFFF; // White
+
+  // Color Palette - White Smoke
+  --color-white-smoke-200: #F5F4F4;
+  --color-white-smoke-100: #DDDDDD;
+}
+
+// Base Text Style Classes
+.text-900 {
+  font-size: var(--font-size-900);
+  line-height: var(--line-height-900);
+  font-weight: 400; // regular
+}
+
+.text-800 {
+  font-size: var(--font-size-800);
+  line-height: var(--line-height-800);
+  font-weight: 400; // regular
+}
+
+.text-700 {
+  font-size: var(--font-size-700);
+  line-height: var(--line-height-700);
+  font-weight: 400; // regular
+}
+
+.text-600 {
+  font-size: var(--font-size-600);
+  line-height: var(--line-height-600);
+  font-weight: 400; // regular
+}
+
+.text-500 {
+  font-size: var(--font-size-500);
+  line-height: var(--line-height-500);
+  font-weight: 400; // regular
+}
+
+.text-400 {
+  font-size: var(--font-size-400);
+  line-height: var(--line-height-400);
+  font-weight: 400; // regular
+}
+
+.text-300 {
+  font-size: var(--font-size-300);
+  line-height: var(--line-height-300);
+  font-weight: 400; // regular
+}
+
+.text-200 {
+  font-size: var(--font-size-200);
+  line-height: var(--line-height-200);
+  font-weight: 400; // regular
+}
+
+.text-100 {
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100);
+  font-weight: 400; // regular
+}
+
+// Variations for 300
+.text-300-medium {
+  font-size: var(--font-size-300);
+  line-height: var(--line-height-300);
+  font-weight: 500; // medium
+}
+
+.text-300-light {
+  font-size: var(--font-size-300);
+  line-height: var(--line-height-300);
+  font-weight: 300; // light
+}
+
+.text-300-underline {
+  font-size: var(--font-size-300);
+  line-height: var(--line-height-300);
+  font-weight: 400; // regular
+  text-decoration: underline;
+}
+
+// Variation for 100
+.text-100-all-cap {
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100-all-cap);
+  font-weight: 400; // regular
+  text-transform: uppercase;
+}
+
+/* ============================================
+   Color Palette - Utility Classes
+   ============================================ */
+
+// Neutral Colors - Text
+.text-neutral-700 { color: var(--color-neutral-700); }
+.text-neutral-600 { color: var(--color-neutral-600); }
+.text-neutral-500 { color: var(--color-neutral-500); }
+.text-neutral-400 { color: var(--color-neutral-400); }
+.text-neutral-300 { color: var(--color-neutral-300); }
+.text-neutral-200 { color: var(--color-neutral-200); }
+.text-neutral-100 { color: var(--color-neutral-100); }
+
+// Neutral Colors - Background
+.bg-neutral-700 { background-color: var(--color-neutral-700); }
+.bg-neutral-600 { background-color: var(--color-neutral-600); }
+.bg-neutral-500 { background-color: var(--color-neutral-500); }
+.bg-neutral-400 { background-color: var(--color-neutral-400); }
+.bg-neutral-300 { background-color: var(--color-neutral-300); }
+.bg-neutral-200 { background-color: var(--color-neutral-200); }
+.bg-neutral-100 { background-color: var(--color-neutral-100); }
+
+// White Smoke Colors - Text
+.text-white-smoke-200 { color: var(--color-white-smoke-200); }
+.text-white-smoke-100 { color: var(--color-white-smoke-100); }
+
+// White Smoke Colors - Background
+.bg-white-smoke-200 { background-color: var(--color-white-smoke-200); }
+.bg-white-smoke-100 { background-color: var(--color-white-smoke-100); }
