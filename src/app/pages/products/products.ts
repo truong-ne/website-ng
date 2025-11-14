@@ -2,7 +2,7 @@ import { Component, signal, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { Product } from '../../shared/interfaces/product.interface';
+import { IProduct } from '../../shared/interfaces/product.interface';
 import { ProductCard } from '../../components/product/product-card/product-card';
 
 @Component({
@@ -13,7 +13,7 @@ import { ProductCard } from '../../components/product/product-card/product-card'
 export class Products {
   private breakpointObserver = inject(BreakpointObserver);
 
-  protected readonly products = signal<Product[]>([
+  protected readonly products = signal<IProduct[]>([
     {
       id: 1,
       name: 'Product 1',

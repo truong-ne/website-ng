@@ -1,5 +1,5 @@
 import { Injectable, signal, computed } from '@angular/core';
-import { User } from '../shared/interfaces/user.interface';
+import { IUser } from '../shared/interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +7,7 @@ import { User } from '../shared/interfaces/user.interface';
 export class AuthStore {
   // Private state signals
   private readonly _isAuthenticated = signal<boolean>(false);
-  private readonly _user = signal<User | null>(null);
+  private readonly _user = signal<IUser | null>(null);
 
   // Public readonly getters
   readonly isAuthenticated = this._isAuthenticated.asReadonly();
@@ -43,7 +43,7 @@ export class AuthStore {
   /**
    * Sign in user
    */
-  signIn(user: User): void {
+  signIn(user: IUser): void {
     this._isAuthenticated.set(true);
     this._user.set(user);
     this.saveToLocalStorage();
@@ -52,7 +52,7 @@ export class AuthStore {
   /**
    * Sign up new user
    */
-  signUp(user: User): void {
+  signUp(user: IUser): void {
     this._isAuthenticated.set(true);
     this._user.set(user);
     this.saveToLocalStorage();
