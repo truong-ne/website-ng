@@ -7,6 +7,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthDialog } from '../../auth/auth-dialog/auth-dialog';
+import { AuthStore } from '../../../stores/auth';
 
 @Component({
   selector: 'app-header',
@@ -22,39 +23,27 @@ import { AuthDialog } from '../../auth/auth-dialog/auth-dialog';
 })
 export class Header {
   private readonly dialog = inject(MatDialog);
+  protected readonly authStore: AuthStore = inject(AuthStore);
 
   protected readonly wishlistCount = signal(0);
   protected readonly cartCount = signal(2);
-  protected readonly isAuthenticated = signal(false);
+  protected readonly isAuthenticated = this.authStore.isAuthenticated;
 
-  protected openSignInDialog() {
-    const dialogRef = this.dialog.open(AuthDialog, {
+  protected openSignInDialog(): void {
+    this.dialog.open(AuthDialog, {
       width: '500px',
       data: { initialTab: 0 }
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.isAuthenticated.set(true);
-      }
-    });
   }
 
-  protected openSignUpDialog() {
-    const dialogRef = this.dialog.open(AuthDialog, {
+  protected openSignUpDialog(): void {
+    this.dialog.open(AuthDialog, {
       width: '500px',
       data: { initialTab: 1 }
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.isAuthenticated.set(true);
-      }
-    });
   }
 
-  protected signOut() {
-    this.isAuthenticated.set(false);
-    // TODO: Add actual sign out logic here
+  protected signOut(): void {
+    this.authStore.signOut();
   }
 }
